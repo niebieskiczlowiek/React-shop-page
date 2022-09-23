@@ -54,11 +54,18 @@ const App = () => {
 
   const discountCode = (code) => {
     const item = products.filter((products) => products.promoCode === code)[0]
+    const redeemed = item.redeemed
     if (item) {
       console.log(item.name, item.price)
-      item.price = (item.price - item.price*item.promoCodeDiscount).toFixed(1);
-      console.log(item.name, item.price)
-      setProducts([...products, item])
+      if (redeemed === false) {
+        item.price = (item.price - item.price*item.promoCodeDiscount).toFixed(1);
+        console.log(item.name, item.price)
+        item.redeemed = true;
+        setProducts([...products, item])
+      }
+      else {
+        alert('Coupon already used')
+      }
     }
     else {
       console.log('Invalid coupon code')
