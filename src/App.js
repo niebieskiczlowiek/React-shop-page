@@ -88,18 +88,20 @@ const App = () => {
       <div className="topbar">
         
         <div className="top3"></div>
-        <div className="top2"></div>
+        <div className="top2" onClick={showCouponBox}>
+          <p className="topButton">Kupony</p>
+        </div>
         <div className="top1">
           <h1 className="header"> Shop Pracz </h1>
         </div>
-        <div className="top2"></div>
+        <div className="top2" onClick={showCart}>
+          <p className="topButton">Koszyk</p>
+        </div>
         <div className="top3"></div>
 
       </div>  
       {couponBox && <Coupons discountCode={discountCode}/>}
       {cartState && <Cart cart={cart} clearCart={clearCart} className="outerCart" deleteLast={deleteLastItem} deleteItem={deleteItem} />}
-      <button onClick={showCart}>Toggle Cart</button>
-      <button onClick={showCouponBox}>Input coupons</button>
       <div> 
         <Products products={products} setCart={addToCart} /*discountCode={discountCode}*/ category={category} itemCategory={itemCategory}/>
       </div> 

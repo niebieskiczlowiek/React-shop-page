@@ -5,15 +5,14 @@ const Products = (props) => {
 
     return (
         <div>
-            <h2 className="header2">Products</h2>
-            <div className="categories">
-                <button onClick={() => props.category('all')} className="category">All</button>
-                <button onClick={() => props.category('Relaksacja')} className="category">Relakascja</button>
-                <button onClick={() => props.category('Uzytek')} className="category">Uzytek</button>
-                <button onClick={() => props.category('Jedzenie')} className="category">Jedzenie</button>
-                <button onClick={() => props.category('Higiena')} className="category">Higiena</button>
-            </div>
             <div className="products-container">
+                <div className="categories">
+                    <button className="button" onClick={() => props.category('all')}>All</button>
+                    <button className="button" onClick={() => props.category('Relaksacja')}>Relakascja</button>
+                    <button className="button" onClick={() => props.category('Uzytek')}>Uzytek</button>
+                    <button className="button" onClick={() => props.category('Jedzenie')}>Jedzenie</button>
+                    <button className="button" onClick={() => props.category('Higiena')}>Higiena</button>
+                </div>
                 {category.map((product) => <div className='wholeItem'>
 
                     <div className='mainItem'>

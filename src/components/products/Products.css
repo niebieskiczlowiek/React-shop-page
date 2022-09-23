@@ -4,12 +4,9 @@
     background: #282c34;
     width: 40%;
     margin: 50px auto;
+    padding: 5px;
     border-radius: 5px;
-    border-style: double;
-    border-color: #181b20;
-    border-width: 10px;
     font-family: 'M PLUS Rounded 1c', sans-serif;
-    /*display: grid;*/
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: minmax(100px, auto);
 }
@@ -20,9 +17,6 @@
     height: auto;
     right: 5px;
     margin: 5px;
-    border-style: double;
-    border-color: #181b20;
-    border-width: 7px;
     border-radius: 5px;
     font-size: 20px;
 }
@@ -30,12 +24,6 @@
 .maintItem:hover {
     background: blue;
 }
-
-/*.mainItem:hover {
-    background: rgba(0, 0, 0, 0);
-    border-style: none;
-    margin: 12px;
-} */
 
 .wholeItem {
     display: flex
@@ -51,11 +39,25 @@
 }
 
 .button {
-    background:#bcc6da;
-    width: 100px;
-    height: 50px;
-    margin: 5px;
-    border-style: double;
-    border-color: #181b20;
-    border-width: 7px;
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background-color:#f9f9f9;
+	border-radius:10px;
+    border-style: none;
+	display:inline-block;
+	cursor:pointer;
+	color:#524f4f;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+    margin: 2px;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.button:hover {
+	background-color:#d4cbca;
+}
+
+.button:active{
+    position:relative;
+	top:1px;
 }
