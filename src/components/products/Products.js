@@ -11,6 +11,7 @@ const Products = (props) => {
                 <button onClick={() => props.category('Relaksacja')} className="category">Relakascja</button>
                 <button onClick={() => props.category('Uzytek')} className="category">Uzytek</button>
                 <button onClick={() => props.category('Jedzenie')} className="category">Jedzenie</button>
+                <button onClick={() => props.category('Higiena')} className="category">Higiena</button>
             </div>
             <div className="products-container">
                 {category.map((product) => <div className='wholeItem'>

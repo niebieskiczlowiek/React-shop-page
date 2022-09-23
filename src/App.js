@@ -52,24 +52,19 @@ const App = () => {
     setCart(newCart);
   }
 
-  const discountCode = (code, inf) => {
-    const message = products.map(item => {
-      if (item.promoCode === code) {
-        console.log(item.name, item.price)
-        item.price = item.price - item.promoCodeDiscount;
-        console.log(item.name, item.price)
-        inf = 'Coupon redeemed';
-      }
-      else {
-        console.log('no discount')
-        inf = 'Invalid coupon';
-      }
-      return inf
-    })
-    return message
-  }
+  const discountCode = (code) => {
+    const item = products.filter((products) => products.promoCode === code)[0]
+    if (item) {
+      console.log(item.name, item.price)
+      item.price = (item.price - item.price*item.promoCodeDiscount).toFixed(1);
+      console.log(item.name, item.price)
+      setProducts([...products, item])
+    }
+    else {
+      console.log('Invalid coupon code')
+    }
 
-  const message = discountCode();
+  }
 
   const category = (category) => {
     if (category === 'all') {
@@ -94,7 +89,7 @@ const App = () => {
         <div className="top3"></div>
 
       </div>  
-      {couponBox && <Coupons discountCode={discountCode} message={message} />}
+      {couponBox && <Coupons discountCode={discountCode}/>}
       {cartState && <Cart cart={cart} clearCart={clearCart} className="outerCart" deleteLast={deleteLastItem} deleteItem={deleteItem} />}
       <button onClick={showCart}>Toggle Cart</button>
       <button onClick={showCouponBox}>Input coupons</button>
