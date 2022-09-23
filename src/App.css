@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
+
+.App {
+  text-align: center;
+  background: #464a55;
+  /*width: 50%;*/
+  margin: 10px; 
+  border-radius: 10px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  position: relative;
+  
+}
+
+.topbar{
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+}
+
+.top1 {
+  width: 130px;
+  height: 130px;
+  margin: 5px;
+  border-style: solid;
+  border-color: white;
+  border-width: 6px;
+  border-radius: 50%;
+  background-color: #282c34;
+  font-size: 15px;
+  color:white;
+}
+
+.top2{
+  width: 90px;
+  height: 90px;
+  margin: 5px;
+  border-style: solid;
+  border-color: white;
+  border-width: 6px;
+  border-radius: 50%;
+  background-color: #282c34;
+}
+
+.top3{
+  width: 60px;
+  height: 60px;
+  margin: 5px;
+  border-style: solid;
+  border-color: white;
+  border-width: 6px;
+  border-radius: 50%;
+  background-color: #282c34;
+}
+.header {
+  text-align: center;
+}
+
+ @-webkit-keyframes outerCart {
+  0% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translateZ(50px);
+            transform: translateZ(50px);
+    -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+  }
+}
+@keyframes outerCart {
+  0% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translateZ(50px);
+            transform: translateZ(50px);
+    -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+  }
+}
+
+
+@media only screen and (max-width: 1105px) {
+  .App {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+  }
+  .top1{
+      width: 100px;
+      height: 100px;
+      font-size: 12px;
+  }
+  .top2{
+      width: 70px;
+      height: 70px;
+  }
+  .top3{
+      width: 50px;
+      height: 50px;
+  }
+}
+

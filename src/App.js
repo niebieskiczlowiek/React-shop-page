@@ -1,0 +1,108 @@
+import React, { useState, useEffect } from 'react'; 
+import './App.css';
+import Products from './components/products/Products'
+import Cart from './components/cart/Cart'
+import Coupons from './components/coupons/Coupons';
+
+
+const App = () => {
+  const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
+  const [cartState, setCartState] = useState(false);
+  const [itemCategory, setCategory] = useState([])
+  const [couponBox, setCouponBox] = useState(false);
+
+  useEffect(() => {
+    const getData = async () => {
+      const response = await fetch('./products.json');
+      const data = await response.json();
+  
+      setProducts(data.products);
+      setCategory(data.products);
+    };
+  
+    getData();
+  }, []); /*  <---- ten pusty array daje to ze funkcja odpali sie tyklo raz (to tylko taki zapis, tu nie ma faktycznego arraya) */
+
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+    setCartState(true)
+    console.log(cart);
+  }
+
+  const clearCart = () => {
+    setCart([]);
+  }
+
+  const showCart = () => {
+    setCartState(!cartState);
+  }
+
+  const showCouponBox = () => {
+    setCouponBox(!couponBox);
+  }
+
+  const deleteLastItem = () => {
+    setCart(cart.slice(0, -1));
+  }
+
+  const deleteItem = (index) => {
+    const newCart = [...cart];
+    newCart.splice(index, 1);
+    setCart(newCart);
+  }
+
+  const discountCode = (code, inf) => {
+    const message = products.map(item => {
+      if (item.promoCode === code) {
+        console.log(item.name, item.price)
+        item.price = item.price - item.promoCodeDiscount;
+        console.log(item.name, item.price)
+        inf = 'Coupon redeemed';
+      }
+      else {
+        console.log('no discount')
+        inf = 'Invalid coupon';
+      }
+      return inf
+    })
+    return message
+  }
+
+  const message = discountCode();
+
+  const category = (category) => {
+    if (category === 'all') {
+      setCategory(products)
+    }
+    else {
+      const listCategory = products.filter((products) => products.category === category);
+      setCategory(listCategory);
+    }
+  }
+
+  return (
+    <div className="App">
+      <div className="topbar">
+        
+        <div className="top3"></div>
+        <div className="top2"></div>
+        <div className="top1">
+          <h1 className="header"> Shop Pracz </h1>
+        </div>
+        <div className="top2"></div>
+        <div className="top3"></div>
+
+      </div>  
+      {couponBox && <Coupons discountCode={discountCode} message={message} />}
+      {cartState && <Cart cart={cart} clearCart={clearCart} className="outerCart" deleteLast={deleteLastItem} deleteItem={deleteItem} />}
+      <button onClick={showCart}>Toggle Cart</button>
+      <button onClick={showCouponBox}>Input coupons</button>
+      <div> 
+        <Products products={products} setCart={addToCart} /*discountCode={discountCode}*/ category={category} itemCategory={itemCategory}/>
+      </div> 
+    </div>
+  );
+}
+
+export default App;

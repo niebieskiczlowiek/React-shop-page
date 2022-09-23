@@ -1,0 +1,76 @@
+{
+    "products": [
+        {
+            "id": 0,
+            "name": "Sandały Prejsa",
+            "description": "Pachnące, zgrzybiałe i mega fajne.",
+            "price": 2.99,
+            "promoPrice": null,
+            "category": "Relaksacja",
+            "available": true,
+            "image": "logo512.png",
+            "promoCode": null,
+            "promoCodeDiscount": null
+        },
+        {
+            "id": 1,
+            "name": "Kanapka Grubego",
+            "description": "Pełna masła i sera",
+            "price": 10,
+            "promoPrice": 4.99,
+            "category": "Jedzenie",
+            "available": true,
+            "image": "logo512.png",
+            "promoCode": "HUELL",
+            "promoCodeDiscount": 0.5
+        },
+        {
+            "id": 2,
+            "name": "Golarka Gontarka",
+            "description": "Ostra jak brzytwa a i tak ledwo co goli",
+            "price": 9.11,
+            "promoPrice": 5.99,
+            "category": "Higiena",
+            "available": true,
+            "image": "logo512.png",
+            "promoCode": null,
+            "promoCodeDiscount": null
+        },
+        {
+            "id": 3,
+            "name": "Karp Olssona",
+            "description": "Duzy, piekny, taki ktorego kazdy polak pozazdrosci",
+            "price": 30.45,
+            "promoPrice": 27.99,
+            "category": "Jedzenie",
+            "available": true,
+            "image": "logo512.png",
+            "promoCode": null,
+            "promoCodeDiscount": null
+        },
+        {
+            "id": 4,
+            "name": "Kula Igora",
+            "description": "Idealna na zlamane nogi i skrecone kostki ;)",
+            "price": 120.50,
+            "promoPrice": null,
+            "category": "Uzytek",
+            "available": true,
+            "image": "logo512.png",
+            "promoCode": null,
+            "promoCodeDiscount": null
+        },
+        {
+            "id": 5,
+            "name": "Zegarek Piotrka",
+            "description": "Z nim nigdy sie nie spoznisz",
+            "price": 80.50,
+            "promoPrice": 69.00,
+            "category": "Uzytek",
+            "available": false,
+            "image": "logo512.png",
+            "promoCode": "ZOLZA",
+            "promoCodeDiscount": 0.25
+        }
+    ]
+}

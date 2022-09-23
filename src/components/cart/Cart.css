@@ -1,0 +1,15 @@
+.cart {
+    display: inline-block;
+    position: fixed;
+    top: 10;
+    right: 0; 
+    padding: 10px;
+    border: 2px solid #000;
+    background:#656b79;
+    margin: 25px;
+    margin-right: 0;
+}
+
+.cartItems{
+    display: flex;
+}
