@@ -1,6 +1,5 @@
 import './Products.css'
 const Products = (props) => {
-    /*const products = props.products; */
     const category = props.itemCategory;
 
     return (

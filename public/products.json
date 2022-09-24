@@ -1,19 +1,6 @@
 {
     "products": [
         {
-            "id": 0,
-            "name": "Sandały Prejsa",
-            "description": "Pachnące, zgrzybiałe i mega fajne.",
-            "price": 2.99,
-            "promoPrice": null,
-            "category": "Relaksacja",
-            "available": true,
-            "image": "logo512.png",
-            "promoCode": null,
-            "promoCodeDiscount": null,
-            "redeemed": false
-        },
-        {
             "id": 1,
             "name": "Kanapka Grubego",
             "description": "Pełna masła i sera",

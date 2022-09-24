@@ -7,6 +7,7 @@
     background:#656b79;
     margin: 25px;
     margin-right: 0;
+    border-radius: 5px;
 }
 
 .cartItems{
@@ -17,6 +18,11 @@
 
 .buttons{
     display:flex;
+    flex-direction:column;
+}
+
+.material-symbols-outlined {
+    user-select: none;  
 }
 
 .material-symbols-outlined:hover {
@@ -29,10 +35,10 @@
 	top:5px;
 }
 
-.material-symbols-outlined{
-    
+.exit{
+    display: flex;
+    height: 50px;
 }
-
 
 .button {
     box-shadow:inset 0px 1px 0px 0px #ffffff;

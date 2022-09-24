@@ -11,6 +11,7 @@ const App = () => {
   const [cartState, setCartState] = useState(false);
   const [itemCategory, setCategory] = useState([])
   const [couponBox, setCouponBox] = useState(false);
+  const [cartSum, setCartSum] = useState(0);
 
   useEffect(() => {
     const getData = async () => {
@@ -28,10 +29,12 @@ const App = () => {
     setCart([...cart, product]);
     setCartState(true)
     console.log(cart);
+    getCartSum();
   }
 
   const clearCart = () => {
     setCart([]);
+    setCartSum(0);
   }
 
   const showCart = () => {
@@ -44,16 +47,19 @@ const App = () => {
 
   const deleteLastItem = () => {
     setCart(cart.slice(0, -1));
+    setCartSum(cartSum - cart[cart.length - 1].price);
   }
 
   const deleteItem = (index) => {
     const newCart = [...cart];
     newCart.splice(index, 1);
     setCart(newCart);
+    setCartSum(cartSum - cart[index].price);
   }
 
   const discountCode = (code) => {
     const item = products.filter((products) => products.promoCode === code)[0]
+    console.log(item)
     const redeemed = item.redeemed
     if (item) {
       console.log(item.name, item.price)
@@ -70,8 +76,7 @@ const App = () => {
     else {
       console.log('Invalid coupon code')
     }
-
-  }
+  } 
 
   const category = (category) => {
     if (category === 'all') {
@@ -81,6 +86,15 @@ const App = () => {
       const listCategory = products.filter((products) => products.category === category);
       setCategory(listCategory);
     }
+  }
+
+  const getCartSum = () => {
+    let sum = 0;
+    cart.forEach((item) => {
+      sum += item.price;
+    })
+    setCartSum(sum.toFixed(1));
+    console.log(sum)
   }
 
   return (
@@ -101,9 +115,9 @@ const App = () => {
 
       </div>  
       {couponBox && <Coupons discountCode={discountCode}/>}
-      {cartState && <Cart cart={cart} clearCart={clearCart} className="outerCart" deleteLast={deleteLastItem} deleteItem={deleteItem} />}
+      {cartState && <Cart cart={cart} className="outerCart" clearCart={clearCart} deleteLast={deleteLastItem} deleteItem={deleteItem} cartSum={cartSum} />}
       <div> 
-        <Products products={products} setCart={addToCart} /*discountCode={discountCode}*/ category={category} itemCategory={itemCategory}/>
+        <Products products={products} setCart={addToCart} category={category} itemCategory={itemCategory}/>
       </div> 
     </div>
   );
