@@ -11,7 +11,8 @@ const App = () => {
   const [cartState, setCartState] = useState(false);
   const [itemCategory, setCategory] = useState([])
   const [couponBox, setCouponBox] = useState(false);
-  const [cartSum, setCartSum] = useState(0);
+  let [cartSum, setCartSum] = useState(0);
+  const [image, setImageState] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
@@ -28,8 +29,8 @@ const App = () => {
   const addToCart = (product) => {
     setCart([...cart, product]);
     setCartState(true)
-    console.log(cart);
-    getCartSum();
+    console.log(product.price)
+    getCartSum(product.price);
   }
 
   const clearCart = () => {
@@ -59,13 +60,10 @@ const App = () => {
 
   const discountCode = (code) => {
     const item = products.filter((products) => products.promoCode === code)[0]
-    console.log(item)
     const redeemed = item.redeemed
     if (item) {
-      console.log(item.name, item.price)
       if (redeemed === false) {
         item.price = (item.price - item.price*item.promoCodeDiscount).toFixed(1);
-        console.log(item.name, item.price)
         item.redeemed = true;
         setProducts([...products, item])
       }
@@ -87,14 +85,14 @@ const App = () => {
       setCategory(listCategory);
     }
   }
+  const getCartSum = (price) => {
+    console.log('ok')
+    setCartSum(cartSum + price)
+  }
 
-  const getCartSum = () => {
-    let sum = 0;
-    cart.forEach((item) => {
-      sum += item.price;
-    })
-    setCartSum(sum.toFixed(1));
-    console.log(sum)
+  const getImage = (id) => {
+    setImageState(!image)
+    console.log(id, image)
   }
 
   return (
@@ -117,7 +115,7 @@ const App = () => {
       {couponBox && <Coupons discountCode={discountCode}/>}
       {cartState && <Cart cart={cart} className="outerCart" clearCart={clearCart} deleteLast={deleteLastItem} deleteItem={deleteItem} cartSum={cartSum} />}
       <div> 
-        <Products products={products} setCart={addToCart} category={category} itemCategory={itemCategory}/>
+        <Products products={products} setCart={addToCart} category={category} itemCategory={itemCategory} getImage={getImage}/>
       </div> 
     </div>
   );

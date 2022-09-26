@@ -27,8 +27,8 @@ const Products = (props) => {
                         <button className="button" onClick={() => props.setCart(product)}>Add to cart</button>
                     </div>
 
-                    <div className='itemImage'>
-                        <img className="image" src={product.image} alt="item" />
+                    <div className='itemImage' onClick={() => props.getImage(product.id)}>
+                        <img className="image" src={product.image} alt="item"/>
                     </div>
 
                 </div>)}

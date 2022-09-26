@@ -21,10 +21,6 @@
     font-size: 20px;
 }
 
-.maintItem:hover {
-    background: blue;
-}
-
 .wholeItem {
     display: flex
 }
@@ -37,6 +33,13 @@
     height: 300px;
     width: 270px;
     border-radius: 10px;
+    border-style: solid;
+    border-color: white;
+    border-width: 5px;
+}
+
+.image:hover{
+    transform: scale(1.1);
 }
 
 .button {
