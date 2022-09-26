@@ -8,7 +8,7 @@
             "promoPrice": 4.99,
             "category": "Jedzenie",
             "available": true,
-            "image": "logo512.png",
+            "image": "img/kanapka.jpg",
             "promoCode": "HUELL",
             "promoCodeDiscount": 0.5,
             "redeemed": false
@@ -21,7 +21,7 @@
             "promoPrice": 5.99,
             "category": "Higiena",
             "available": true,
-            "image": "logo512.png",
+            "image": "img/razor.jpg",
             "promoCode": null,
             "promoCodeDiscount": null,
             "redeemed": false
@@ -34,7 +34,7 @@
             "promoPrice": 27.99,
             "category": "Jedzenie",
             "available": true,
-            "image": "logo512.png",
+            "image": "img/karp.jpg",
             "promoCode": null,
             "promoCodeDiscount": null,
             "redeemed": false
@@ -47,7 +47,7 @@
             "promoPrice": null,
             "category": "Uzytek",
             "available": true,
-            "image": "logo512.png",
+            "image": "img/kule.jpg",
             "promoCode": null,
             "promoCodeDiscount": null,
             "redeemed": false
@@ -60,7 +60,7 @@
             "promoPrice": 69.00,
             "category": "Uzytek",
             "available": false,
-            "image": "logo512.png",
+            "image": "img/zegarek.jpg",
             "promoCode": "ZOLZA",
             "promoCodeDiscount": 0.25,
             "redeemed": false
