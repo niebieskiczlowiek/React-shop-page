@@ -17,7 +17,7 @@ const Products = (props) => {
                     <div className='mainItem'>
                         <h2>{product.name}</h2>
                         <p>{product.description}</p>
-                        <p>{product.price} PLN</p>
+                        <p>Cena: {product.price} PLN</p>
                         <p>{product.promoPrice
                             ? `Cena promocyjna: ${product.promoPrice} PLN`
                             : `No promo price`} </p>

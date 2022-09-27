@@ -1,13 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
 
-body, html {
-  height: 100%;
-  margin: 0;
-}
-
 .App {
   text-align: center;
-  height: 100%;
   background: #464a55;
   font-family: 'M PLUS Rounded 1c', sans-serif;
 }

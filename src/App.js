@@ -11,8 +11,8 @@ const App = () => {
   const [cartState, setCartState] = useState(false);
   const [itemCategory, setCategory] = useState([])
   const [couponBox, setCouponBox] = useState(false);
-  let [cartSum, setCartSum] = useState(0);
-  const [image, setImageState] = useState(false);
+  const [cartSum, setCartSum] = useState(0);
+  const [sumNoPromo, setSumNoPromo] = useState(0);
 
   useEffect(() => {
     const getData = async () => {
@@ -24,7 +24,7 @@ const App = () => {
     };
   
     getData();
-  }, []); /*  <---- ten pusty array daje to ze funkcja odpali sie tyklo raz (to tylko taki zapis, tu nie ma faktycznego arraya) */
+  }, []);
 
   const addToCart = (product) => {
     setCart([...cart, product]);
@@ -36,12 +36,14 @@ const App = () => {
       const sum = cartSum + product.price;
       setCartSum(Math.round(sum * 100) / 100);
     }
+    setSumNoPromo(sumNoPromo + product.price);
     
   }
 
   const clearCart = () => {
     setCart([]);
     setCartSum(0);
+    setSumNoPromo(0);
   }
 
   const showCart = () => {
@@ -64,13 +66,13 @@ const App = () => {
       const sum = cartSum - cart[index].promoPrice;
       setCartSum(Math.round(sum * 100) / 100);
     }
+    setSumNoPromo(sumNoPromo - cart[index].price);
   }
 
   const discountCode = (code) => {
     const item = products.filter((products) => products.promoCode === code)[0]
-    const redeemed = item.redeemed
     if (item) {
-      if (redeemed === false) {
+      if (item.redeemed === false) {
         item.price = (item.price - item.price*item.promoCodeDiscount).toFixed(1);
         item.redeemed = true;
         setProducts([...products, item])
@@ -80,7 +82,7 @@ const App = () => {
       }
     }
     else {
-      console.log('Invalid coupon code')
+      alert('Invalid coupon code')
     }
   } 
 
@@ -92,13 +94,6 @@ const App = () => {
       const listCategory = products.filter((products) => products.category === category);
       setCategory(listCategory);
     }
-  }
-  /*const getCartSum = () => {
-  } */
-
-  const getImage = (id) => {
-    setImageState(!image)
-    console.log(id, image)
   }
 
   return (
@@ -119,9 +114,9 @@ const App = () => {
 
       </div>  
       {couponBox && <Coupons discountCode={discountCode}/>}
-      {cartState && <Cart cart={cart} className="outerCart" clearCart={clearCart} deleteItem={deleteItem} cartSum={cartSum} />}
+      {cartState && <Cart cart={cart} className="outerCart" clearCart={clearCart} deleteItem={deleteItem} cartSum={cartSum} sumNoPromo={sumNoPromo} />}
       <div> 
-        <Products products={products} setCart={addToCart} category={category} itemCategory={itemCategory} getImage={getImage}/>
+        <Products products={products} setCart={addToCart} category={category} itemCategory={itemCategory}/>
       </div> 
     </div>
   );

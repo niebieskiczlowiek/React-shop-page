@@ -2,16 +2,13 @@ import './Cart.css';
 
 const Cart = (props) => {
     const cart = props.cart;
-
+    const noPromo = props.sumNoPromo - props.cartSum;
     return (
         <div className="cart">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-            <div className="exit">
-                <div className="material-symbols-outlined">
-                    arrow_forward
-                </div>
-            </div>
-            <h3>{props.cartSum}</h3>
+            <h3 className="cartHeader">Suma: {props.cartSum} PLN</h3>
+            <h4 className="cartHeader">Zaoszczedzasz: {Math.round((noPromo * 100) / 100)} PLN</h4>
+            <div className="outerCart">
                 {cart.map((item, index) => {
                     return <div className='cartItems'>
                         <p className="itemName" key={item}>{item.name}</p>
@@ -20,9 +17,8 @@ const Cart = (props) => {
                         </div>
                     </div>
                 })}
-                <div className="buttons">
-                    <button className="button" onClick={props.clearCart}>Clear Cart</button>
-                </div>
+            </div>
+            <button className="button" onClick={props.clearCart}>Clear Cart</button>
         </div>
     )
 };
