@@ -2,7 +2,7 @@
 
 .products-container {
     background: #282c34;
-    width: 40%;
+    width: 50%;
     margin: 50px auto;
     padding: 5px;
     border-radius: 5px;
@@ -33,9 +33,9 @@
     height: 300px;
     width: 270px;
     border-radius: 10px;
-    border-style: solid;
-    border-color: white;
-    border-width: 5px;
+    -webkit-box-shadow: 17px 1px 22px -1px rgba(21, 25, 33, 1);
+    -moz-box-shadow: 17px 1px 22px -1px rgba(21, 25, 33, 1);
+    box-shadow: 17px 1px 22px -1px rgba(21, 25, 33, 1);
 }
 
 .image:hover{
@@ -60,6 +60,7 @@
 
 .button:hover {
 	background-color:#d4cbca;
+    transform: scale(1.1);
 }
 
 .button:active{

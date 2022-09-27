@@ -28,9 +28,15 @@ const App = () => {
 
   const addToCart = (product) => {
     setCart([...cart, product]);
-    setCartState(true)
-    console.log(product.price)
-    getCartSum(product.price);
+    setCartState(true);
+    if (product.promoPrice){
+      const sum = cartSum + product.promoPrice;
+      setCartSum(Math.round(sum * 100) / 100);
+    } else {
+      const sum = cartSum + product.price;
+      setCartSum(Math.round(sum * 100) / 100);
+    }
+    
   }
 
   const clearCart = () => {
@@ -46,16 +52,18 @@ const App = () => {
     setCouponBox(!couponBox);
   }
 
-  const deleteLastItem = () => {
-    setCart(cart.slice(0, -1));
-    setCartSum(cartSum - cart[cart.length - 1].price);
-  }
-
-  const deleteItem = (index) => {
+  const deleteItem = (index, price, promoPrice) => {
     const newCart = [...cart];
     newCart.splice(index, 1);
     setCart(newCart);
-    setCartSum(cartSum - cart[index].price);
+    console.log(price, promoPrice)
+    if (cart[index].promoPrice === null) {
+      const sum = cartSum - cart[index].price;
+      setCartSum(Math.round(sum * 100) / 100);
+    } else {
+      const sum = cartSum - cart[index].promoPrice;
+      setCartSum(Math.round(sum * 100) / 100);
+    }
   }
 
   const discountCode = (code) => {
@@ -85,10 +93,8 @@ const App = () => {
       setCategory(listCategory);
     }
   }
-  const getCartSum = (price) => {
-    console.log('ok')
-    setCartSum(cartSum + price)
-  }
+  /*const getCartSum = () => {
+  } */
 
   const getImage = (id) => {
     setImageState(!image)
@@ -113,7 +119,7 @@ const App = () => {
 
       </div>  
       {couponBox && <Coupons discountCode={discountCode}/>}
-      {cartState && <Cart cart={cart} className="outerCart" clearCart={clearCart} deleteLast={deleteLastItem} deleteItem={deleteItem} cartSum={cartSum} />}
+      {cartState && <Cart cart={cart} className="outerCart" clearCart={clearCart} deleteItem={deleteItem} cartSum={cartSum} />}
       <div> 
         <Products products={products} setCart={addToCart} category={category} itemCategory={itemCategory} getImage={getImage}/>
       </div> 

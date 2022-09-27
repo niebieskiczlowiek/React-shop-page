@@ -15,14 +15,13 @@ const Cart = (props) => {
                 {cart.map((item, index) => {
                     return <div className='cartItems'>
                         <p className="itemName" key={item}>{item.name}</p>
-                        <div className="material-symbols-outlined" onClick={() => props.deleteItem(index)}>
+                        <div className="material-symbols-outlined" onClick={() => props.deleteItem(index, item.price, item.promoPrice)}>
                             <p>cancel</p>
                         </div>
                     </div>
                 })}
                 <div className="buttons">
                     <button className="button" onClick={props.clearCart}>Clear Cart</button>
-                    <button className="button" onClick={props.deleteLast}>Delete Last Item</button>
                 </div>
         </div>
     )
