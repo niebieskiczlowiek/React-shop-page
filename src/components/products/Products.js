@@ -12,21 +12,22 @@ const Products = (props) => {
                     <button className="button" onClick={() => props.category('Jedzenie')}>Jedzenie</button>
                     <button className="button" onClick={() => props.category('Higiena')}>Higiena</button>
                 </div>
+                <h1>{category.length
+                        ? ``
+                        : `No products in this category`}</h1>
                 {category.map((product) => <div className='wholeItem'>
-
                     <div className='mainItem'>
                         <h2>{product.name}</h2>
                         <p>{product.description}</p>
                         <p>Cena: {product.price} PLN</p>
                         <p>{product.promoPrice
                             ? `Cena promocyjna: ${product.promoPrice} PLN`
-                            : `No promo price`} </p>
+                            : ``} </p>
                         <p>{product.promoPrice
                             ? `Zaoszczedzasz: ${(product.price - product.promoPrice).toFixed(1)} PLN`
                             : ``} </p>
                         <button className="button" onClick={() => props.setCart(product)}>Add to cart</button>
                     </div>
-
                     <div className='itemImage' onClick={() => props.getImage(product.id)}>
                         <img className="image" src={product.image} alt="item"/>
                     </div>

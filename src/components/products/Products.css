@@ -19,6 +19,9 @@
     margin: 5px;
     border-radius: 5px;
     font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
 }
 
 .wholeItem {
@@ -30,9 +33,14 @@
 }
 
 .image {
-    height: 300px;
+    /* height: 300px;
     width: 270px;
-    border-radius: 10px;
+    border-radius: 10px; */
+    height: 325px;
+    width: 325px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
     -webkit-box-shadow: 17px 1px 22px -1px rgba(21, 25, 33, 1);
     -moz-box-shadow: 17px 1px 22px -1px rgba(21, 25, 33, 1);
     box-shadow: 17px 1px 22px -1px rgba(21, 25, 33, 1);
@@ -40,6 +48,8 @@
 
 .image:hover{
     transform: scale(1.1);
+    -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 .button {
@@ -61,6 +71,7 @@
 .button:hover {
 	background-color:#d4cbca;
     transform: scale(1.1);
+    
 }
 
 .button:active{

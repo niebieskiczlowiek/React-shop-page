@@ -35,8 +35,8 @@
             "category": "Jedzenie",
             "available": true,
             "image": "img/karp.jpg",
-            "promoCode": null,
-            "promoCodeDiscount": null,
+            "promoCode": "BETON",
+            "promoCodeDiscount": 0.34,
             "redeemed": false
         },
         {

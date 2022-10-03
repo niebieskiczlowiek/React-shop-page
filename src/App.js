@@ -4,7 +4,6 @@ import Products from './components/products/Products'
 import Cart from './components/cart/Cart'
 import Coupons from './components/coupons/Coupons';
 
-
 const App = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
@@ -22,22 +21,24 @@ const App = () => {
       setProducts(data.products);
       setCategory(data.products);
     };
-  
     getData();
   }, []);
 
   const addToCart = (product) => {
-    setCart([...cart, product]);
-    setCartState(true);
-    if (product.promoPrice){
-      const sum = cartSum + product.promoPrice;
-      setCartSum(Math.round(sum * 100) / 100);
+    if (product.available === true) {
+      setCart([...cart, product]);
+      setCartState(true);
+      if (product.promoPrice){
+        const sum = cartSum + product.promoPrice;
+        setCartSum(Math.round(sum * 100) / 100);
+      } else {
+        const sum = cartSum + product.price;
+        setCartSum(Math.round(sum * 100) / 100);
+      }
+      setSumNoPromo(sumNoPromo + product.price);
     } else {
-      const sum = cartSum + product.price;
-      setCartSum(Math.round(sum * 100) / 100);
+      alert('This product is not available');
     }
-    setSumNoPromo(sumNoPromo + product.price);
-    
   }
 
   const clearCart = () => {
@@ -58,7 +59,6 @@ const App = () => {
     const newCart = [...cart];
     newCart.splice(index, 1);
     setCart(newCart);
-    console.log(price, promoPrice)
     if (cart[index].promoPrice === null) {
       const sum = cartSum - cart[index].price;
       setCartSum(Math.round(sum * 100) / 100);
@@ -70,15 +70,16 @@ const App = () => {
   }
 
   const discountCode = (code) => {
+    code = code.toUpperCase();
     const item = products.filter((products) => products.promoCode === code)[0]
     if (item) {
       if (item.redeemed === false) {
         item.price = (item.price - item.price*item.promoCodeDiscount).toFixed(1);
         item.redeemed = true;
-        setProducts([...products, item])
+        setProducts([...products, item]);
       }
       else {
-        alert('Coupon already used')
+        alert('Coupon already used');
       }
     }
     else {
