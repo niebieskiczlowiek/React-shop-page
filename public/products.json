@@ -48,8 +48,8 @@
             "category": "Uzytek",
             "available": true,
             "image": "img/kule.jpg",
-            "promoCode": null,
-            "promoCodeDiscount": null,
+            "promoCode": "IGORITO",
+            "promoCodeDiscount": 0.25,
             "redeemed": false
         },
         {

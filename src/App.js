@@ -30,14 +30,16 @@ const App = () => {
       setCartState(true);
       if (product.promoPrice){
         const sum = cartSum + product.promoPrice;
+        console.log(sum)
         setCartSum(Math.round(sum * 100) / 100);
       } else {
         const sum = cartSum + product.price;
+        console.log(sum)
         setCartSum(Math.round(sum * 100) / 100);
       }
       setSumNoPromo(sumNoPromo + product.price);
     } else {
-      alert('This product is not available');
+        alert('This product is not available');
     }
   }
 
@@ -55,7 +57,7 @@ const App = () => {
     setCouponBox(!couponBox);
   }
 
-  const deleteItem = (index, price, promoPrice) => {
+  const deleteItem = (index) => {
     const newCart = [...cart];
     newCart.splice(index, 1);
     setCart(newCart);
@@ -103,13 +105,13 @@ const App = () => {
         
         <div className="top3"></div>
         <div className="top2" onClick={showCouponBox}>
-          <p className="topButton">Kupony</p>
+          <p className="topButton">Coupon</p>
         </div>
         <div className="top1">
           <h1 className="header"> Shop Pracz </h1>
         </div>
         <div className="top2" onClick={showCart}>
-          <p className="topButton">Koszyk</p>
+          <p className="topButton">Cart</p>
         </div>
         <div className="top3"></div>
 
